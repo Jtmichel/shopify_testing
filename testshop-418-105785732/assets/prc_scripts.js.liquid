@@ -1,5 +1,81 @@
-$('.test-button').click(function() {
-    CartJS.addItem(21037743876, 5, {
-        "added_by": "Cart.js"   
-    });
+$(document).ready(function(){
+	$('.test-button').click(function() {
+	    CartJS.addItem(21037743876, 5, {
+	        "added_by": "Cart.js"   
+	    });
+	});
+
+	var auction = {
+		currentBid: 1000,
+		timeLeft: 100,
+		bidAmount: 10,
+		product: {
+			name: 'test product'
+		},
+		auctioneer: {
+			name: 'Jesse'
+		},
+		bid : function(){
+			this.currentBid = this.currentBid + this.bidAmount;
+		}
+	}
+
+
+	// BIND RIVETS
+	rivets.bind($('#auction'), {auction: auction}); 
+
+
+
+	auction.timeleft = 20;
+
+	rivets.configure({
+
+	  // Attribute prefix in templates
+	  prefix: 'rv',
+
+	  // Preload templates with initial data on bind
+	  preloadData: true,
+
+	  // Root sightglass interface for keypaths
+	  rootInterface: '.',
+
+	  // Template delimiters for text bindings
+	  templateDelimiters: ['{', '}'],
+
+	  // Augment the event handler of the on-* binder
+	  // handler: function(target, event, binding) {
+	  //   this.call(target, event, binding.view.models)
+	  // }
+
+	})
+
+	// rivets.binders.color = function(el, value) {
+	//   el.style.color = value
+	// }
+
+
+
+	// rivets.binders.toggle = {
+	//   bind: function(el) {
+	//     adapter = this.config.adapters[this.key.interface]
+	//     model = this.model
+	//     keypath = this.keypath
+
+	//     this.callback = function() {
+	//       value = adapter.read(model, keypath)
+	//       adapter.publish(model, keypath, !value)
+	//     }
+
+	//     $(el).on('click', this.callback)
+	//   },
+
+	//   unbind: function(el) {
+	//     $(el).off('click', this.callback)
+	//   },
+
+	//   routine: function(el, value) {
+	//     $(el)[value ? 'addClass' : 'removeClass']('enabled')
+	//   }
+	// }	
+
 });

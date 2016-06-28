@@ -71,6 +71,22 @@
   </div>
 </div>
 
+<!-- RIVETS & CARTJS TESTING -->
+<section id="auction">
+  <h1>
+    TEST TEST { auction.auctioneer.name }
+  </h1>
+  <h3>{ auction.product.name }</h3>
+  <p>Current bid: { auction.currentBid | money }</p>
+
+  <aside rv-if="auction.timeLeft | lt 120">
+    Hurry up! There is { auction.timeLeft | time } left.
+  </aside>
+  <input type="number" value="{ auction.bidAmount }"/>
+  <button rv-on-click="{ auction.bid }" rv-color="auction.bid">Bid { auction.bid.amount }</button>  
+</section>
+<!-- END RIVETS & CARTJS TESTING -->
+
 {% comment %}
   Track how many sections are shown
 {% endcomment %}
